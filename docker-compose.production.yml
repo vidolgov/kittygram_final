@@ -38,7 +38,12 @@ services:
       - static:/static
     command: >
       sh -c "
-      cp -r /app/build/. /static/
+      cp /app/build/index.html /static/ &&
+      cp /app/build/asset-manifest.json /static/ &&
+      cp /app/build/manifest.json /static/ &&
+      cp /app/build/robots.txt /static/ &&
+      cp -r /app/build/static/* /static/ &&
+      tail -f /dev/null
       "
 
   gateway:
